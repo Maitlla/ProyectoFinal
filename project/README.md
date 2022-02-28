@@ -1,13 +1,19 @@
+### Integrantes del grupo: Angel, Brais, Chistian, Maite.
+
+### --------------------------------------------------------
+
 ## Título
 Tienda online de venta de cafeteras.
 
 ## Descripción
 La tienda venderá los diversos tipos de cafeteras que hay, cafés y accesorios para las mismas.
 
+--*Es un ejemplo abierto a modificaciones, el tipo de proyecto se decidirá con todo el grupo.*
+
 ![Cafeteras](../src/img/cafeteras.jpg)
 
 ## Necesidad que soluciona
-Sería una tienda especializada en cafeteras y sus productos, facilitando al cliente encontrar en la mismas todo lo que busque.
+Sería una tienda especializada en cafeteras y sus productos, facilitando al cliente encontrar en la misma todo lo que busque.
 
 ## Target
 Para todo el mundo que leguste el café, y bebidas solubles en capsulas.
