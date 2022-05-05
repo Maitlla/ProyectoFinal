@@ -45,6 +45,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - Id único
 - Nombre, apellidos
 - DNI / NIF
+- Teléfono
 - Dirección
 - Código postal
 - Carrito asociado a cliente, (productos comprados)
