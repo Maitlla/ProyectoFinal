@@ -31,17 +31,19 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 
 ![Datos](./Home7.jpg)
 
-![Datos](./Home8.jpg)
-
 ![Datos](./Home9.jpg)
-
-![Datos](./Home10.jpg)
-
-![Datos](./AlquilerSurf2.jpg)
 
 ![Datos](./AlquilerSurf1.jpg)
 
+![Datos](./AlquilerSurf2.jpg)
+
 ![Datos](./AlquilerSkate1.jpg)
+
+![Datos](./AlquilerSkate2.jpg)
+
+![Datos](./AlquilerSurf3.jpg)
+
+![Datos](./AlquilerSkate3.jpg)
 
 
 #
