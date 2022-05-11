@@ -49,13 +49,15 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 
 ![Datos](./datos.jpg)
 
-## Artículos
+## Articles
 
-- Nombre
-- Descripción
-- Foto
-- Stock 
-- Precio del pack para alquilar con IVA incluido
+- Articles_id (PRIMARY KEY)
+- Name
+- Description
+- Stock
+- UrlFoto 
+- Price (pack para alquilar con IVA incluido)
+- Categoria-id (FOREIGN KEY)
 - URL / Referencia - posible enlace con Amazon (si da tiempo)
 
 
@@ -64,34 +66,49 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
         .....(posibilidad de complicarlo más)
 
 
-## Datos cliente
+## Rental
 
         Solo cuando compren pack para alquilar
 
-- Id único
-- Nombre, apellidos
+- Rental_id (PRIMARY KEY)
+- Name
 - DNI / NIF
-- Teléfono
-- Dirección
-- Código postal
-- Carrito asociado a cliente, (productos comprados)
+- Email
+- Phone
+- Code_postal
 
 
-## Carrito
+## Rental_articles
 
-- Artículos (pack para alquilar)
-- Cantidad
+- Rental_articles_id (AUTO_INCREMENT)
+- Rental_id (FOREIGN KEY)
+- Articles_id (FOREIGN KEY)
+- Rental_date
+- Return_date
+- Quantity
+- Price
 - Forma de pago
-- Forma de envío
-- Asociado a datos del cliente
+
+
+## Categorias
+
+- Categorias_id (PRIMARY KEY)
+- Name
+- Description
 
 
 ## Staff
 
-        .....(página externa)
+        .....(página externa) Login de acceso básico para el personal, (gestión de la base de datos).
 
-- Login básico para el personal
-- Jerarquia de acceso del personal (gestión de la base de datos)
+- Staff-id (AUTO_INCREMENT)
+- Name
+- DNI / NIF
+- Password
+- Email
+- Phone
+- Address
+- Active
 
 
 #
@@ -99,81 +116,181 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 
 ![Engranajes](./engranajes.jpg)
 
-## Artículos
+## Articles
 
-- GET
+- GET /articles/ - Devuelve la lista de artículos
+  - Parámetros: Ninguno
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - [{id,name,description,stock,urlFoto,price,categoriaId}]
+    - 500: Error interno de la Base de datos
 
-  Consultar artículos.
+--
+- GET /article/{id} - Devuelve un artículo específico
+  - Parámetros: 
+    - id: Identificador del artículo
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - {id,name,description,stock,urlFoto,price,categoriaId}
+    - 404: Artículo no encontrado
+    - 500: Error interno de la Base de datos
 
-  - GET /articles/- Devuelve una lista de artículos
-  - GET /article/10/- Devuelve un artículo específico
+--
+- POST /article/ - Crea un nuevo artículo (se genera el id)
+  - Parámetros: 
+    - {name,description,stock,urlFoto,price,categoriaId}
+  - Respuestas:
+    - 201: Creado ok. Devuelve: {id}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 500: Error interno de la Base de datos
 
-- POST
+--
+- PUT /article/{id} - Modificar un artículo
+  - Parámetros: 
+    - id: Identificador del artículo
+    - {name,description,stock,urlFoto,price,categoriaId}
+  - Respuestas:
+    - 200: Modificado ok. Devuelve:
+      - {id,name,description,stock,urlFoto,price,categoriaId}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Artículo no encontrado
+    - 500: Error interno de la Base de datos
 
-  Añadir artículos.
-
-  - POST /article/- Crea un nuevo artículo
-
-- PUT
-
-  Hacer modificaciones de los artículos.
-
-  - PUT /article/10/- Modifica el artículo #10
-
+--
 - PATCH
 
   Hacer modificaciones parciales o concretas de los artículos.
 
   (Probablemente no se utilice)
 
-- DELETE 
+--
+- DELETE /article/{id} - Eliminar un artículo
+  - Parámetros: 
+    - id: Identificador del artículo
+    - {name,description,stock,urlFoto,price,categoriaId}
+  - Respuestas:
+    - 200: Eliminado ok. Devuelve:
+      - {id,name,description,stock,urlFoto,price,categoriaId}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Artículo no encontrado
+    - 500: Error interno de la Base de datos
 
-  Eliminar artículos.
 
-  - DELETE /article/10/- Elimina el artículo #10
+## Users (Rental)
+
+- GET /users/ - Devuelve la lista de usuarios
+  - Parámetros: Ninguno
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - [{id,name,dni,email,phone,codePostal}]
+    - 500: Error interno de la Base de datos
+
+--
+- GET /user/{id} - Devuelve un usuario específico
+  - Parámetros: 
+    - id: Identificador del usuario
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - {id,name,dni,email,phone,codePostal}
+    - 404: Usuario no encontrado
+    - 500: Error interno de la Base de datos
+
+--
+- POST /user/ - Crea un nuevo usuario
+  - Parámetros: 
+    - {name,dni,email,phone,codePostal}
+  - Respuestas:
+    - 201: Creado ok. Devuelve: {id}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 500: Error interno de la Base de datos
+
+--
+- PUT /user/{id} - Modificar un usuario
+  - Parámetros: 
+    - id: Identificador del usuario
+    - {name,dni,email,phone,codePostal}
+  - Respuestas:
+    - 200: Modificado ok. Devuelve:
+      - {id,name,dni,email,phone,codePostal}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Usuario no encontrado
+    - 500: Error interno de la Base de datos
+
+--
+- DELETE /user/{id} - Eliminar un usuario
+  - Parámetros: 
+    - id: Identificador del usuario
+    - {name,dni,email,phone,codePostal}
+  - Respuestas:
+    - 200: Eliminado ok. Devuelve:
+      - {id,name,dni,email,phone,codePostal}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Usuario no encontrado
+    - 500: Error interno de la Base de datos
 
 
-## Carrito
+## Cart (Rental_articles)
 
-- GET
+- GET /cart/ - Devuelve una lista con los artículos añadidos al carrito.
+  - Parámetros: Ninguno
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - [{id,nameArticle,categoria,photo,quantity,price}] DUDAS parámetros
+    - 500: Error interno de la Base de datos
 
-  Devuelve una lista con los artículos añadidos al carrito.
+ --
+- POST /cart/ - Añade artículos al carrito
 
-    - GET /carrito/- Consultar el carrito.
+  Crea carrito inicial vacío que identifique al cliente, y se irá modificando con PUT. 
 
-- POST
+  - Parámetros:
+    - id: Identificador DUDAS id del artículo o específico del carrito  
+    - {nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+  - Respuestas:
+    - 201: Añadido ok. Devuelve: {id}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 500: Error interno de la Base de datos
 
-  Crea un carrito inicial vacio, que se irá modificando con PUT.
+--
+- PUT /cart/{id} - Modifica el carrito DUDAS (todo el carrito o por id) 
+  - Parámetros: 
+    - id: Identificador del artículo
+    - {nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+  - Respuestas:
+    - 200: Modificado ok. Devuelve:
+      - {id,nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Artículo no encontrado
+    - 500: Error interno de la Base de datos
 
-  - POST /carrito/- Crear carrito vacío, que identifique al cliente. 
+--
+- DELETE /cart/{id} - Elimina un artículo del carrito
+  - Parámetros: 
+    - id: Identificador del artículo
+    - {nameArticle,categoria,photo,quantity,price} DUDAS parámetros 
+  - Respuestas:
+    - 200: Eliminado ok. Devuelve:
+      - {id,nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Artículo no encontrado
+    - 500: Error interno de la Base de datos
 
-- PUT
 
-  Modifica los artículos del carrito.
-
-  PUT final: se envian los datos del cliente y del pack o packs en alquiler (artículos), cuando se pasa al pago del pack en alquiler.
-
-  - PUT /carrito/- Actualizar el carrito.
-
-- DELETE 
-
-  Elimina los artículos del carrito.
-
-  - DELETE /carrito/- Eliminar el carrito.
+## Categorias
 
 
 ## Staff
 
-        .....(página externa) planteandose
-
-- GET
-- POST
-- PUT
-- PATCH
-- DELETE
-
-
-
+        .....(página externa) 
 
 
 
