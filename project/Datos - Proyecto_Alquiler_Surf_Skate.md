@@ -122,7 +122,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
   - Parámetros: Ninguno
   - Respuestas:
     - 200: ok. Devuelve:
-      - [{id,name,description,stock,urlFoto,price,categoriaId}]
+      - [{articles_id,name,description,stock,photo,price,categoria}]
     - 500: Error interno de la Base de datos
 
 --
@@ -131,14 +131,14 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
     - id: Identificador del artículo
   - Respuestas:
     - 200: ok. Devuelve:
-      - {id,name,description,stock,urlFoto,price,categoriaId}
+      - {articles_id,name,description,stock,photo,price,categoria}
     - 404: Artículo no encontrado
     - 500: Error interno de la Base de datos
 
 --
 - POST /article/ - Crea un nuevo artículo (se genera el id)
   - Parámetros: 
-    - {name,description,stock,urlFoto,price,categoriaId}
+    - {name,description,stock,photo,price,categoria}
   - Respuestas:
     - 201: Creado ok. Devuelve: {id}
     - 400: Petición incorrecta. Error del cliente
@@ -149,10 +149,10 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - PUT /article/{id} - Modificar un artículo
   - Parámetros: 
     - id: Identificador del artículo
-    - {name,description,stock,urlFoto,price,categoriaId}
+    - {name,description,stock,photo,price,categoria}
   - Respuestas:
     - 200: Modificado ok. Devuelve:
-      - {id,name,description,stock,urlFoto,price,categoriaId}
+      - {articles_id,name,description,stock,urlFoto,price,categoriaId}
     - 400: Petición incorrecta. Error del cliente
     - 401: No autorizado o incorrecto
     - 404: Artículo no encontrado
@@ -169,89 +169,32 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - DELETE /article/{id} - Eliminar un artículo
   - Parámetros: 
     - id: Identificador del artículo
-    - {name,description,stock,urlFoto,price,categoriaId}
   - Respuestas:
-    - 200: Eliminado ok. Devuelve:
-      - {id,name,description,stock,urlFoto,price,categoriaId}
+    - 200: Eliminado ok. 
     - 400: Petición incorrecta. Error del cliente
     - 401: No autorizado o incorrecto
     - 404: Artículo no encontrado
     - 500: Error interno de la Base de datos
 
 
-## Users (Rental)
+## Pedido
 
-- GET /users/ - Devuelve la lista de usuarios
+- GET /pedidos/ - Devuelve una lista con los artículos añadidos al carrito.
   - Parámetros: Ninguno
   - Respuestas:
     - 200: ok. Devuelve:
-      - [{id,name,dni,email,phone,codePostal}]
+      - [{rental_articles_id,name,dni,email,phone,code_postal,articles_id,name,categoria,quantity}] (objeto esta construido en los controladores con los datos de Articles, Rental_articles, y Rental)
     - 500: Error interno de la Base de datos
-
---
-- GET /user/{id} - Devuelve un usuario específico
-  - Parámetros: 
-    - id: Identificador del usuario
-  - Respuestas:
-    - 200: ok. Devuelve:
-      - {id,name,dni,email,phone,codePostal}
-    - 404: Usuario no encontrado
-    - 500: Error interno de la Base de datos
-
---
-- POST /user/ - Crea un nuevo usuario
-  - Parámetros: 
-    - {name,dni,email,phone,codePostal}
-  - Respuestas:
-    - 201: Creado ok. Devuelve: {id}
-    - 400: Petición incorrecta. Error del cliente
-    - 401: No autorizado o incorrecto
-    - 500: Error interno de la Base de datos
-
---
-- PUT /user/{id} - Modificar un usuario
-  - Parámetros: 
-    - id: Identificador del usuario
-    - {name,dni,email,phone,codePostal}
-  - Respuestas:
-    - 200: Modificado ok. Devuelve:
-      - {id,name,dni,email,phone,codePostal}
-    - 400: Petición incorrecta. Error del cliente
-    - 401: No autorizado o incorrecto
-    - 404: Usuario no encontrado
-    - 500: Error interno de la Base de datos
-
---
-- DELETE /user/{id} - Eliminar un usuario
-  - Parámetros: 
-    - id: Identificador del usuario
-    - {name,dni,email,phone,codePostal}
-  - Respuestas:
-    - 200: Eliminado ok. Devuelve:
-      - {id,name,dni,email,phone,codePostal}
-    - 400: Petición incorrecta. Error del cliente
-    - 401: No autorizado o incorrecto
-    - 404: Usuario no encontrado
-    - 500: Error interno de la Base de datos
-
-
-## Cart (Rental_articles)
-
-- GET /cart/ - Devuelve una lista con los artículos añadidos al carrito.
-  - Parámetros: Ninguno
-  - Respuestas:
-    - 200: ok. Devuelve:
-      - [{id,nameArticle,categoria,photo,quantity,price}] DUDAS parámetros
-    - 500: Error interno de la Base de datos
+    
 
  --
-- POST /cart/ - Añade artículos al carrito
+- POST /pedido/ - Genera id del pedido
 
   Crea carrito inicial vacío que identifique al cliente, y se irá modificando con PUT. 
 
   - Parámetros:
-    - id: Identificador DUDAS id del artículo o específico del carrito  
-    - {nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+    - id: Identificador del pedido  
+    - {name,dni,email,phone,code_postal,articles_id,name,categoria,quantity} 
   - Respuestas:
     - 201: Añadido ok. Devuelve: {id}
     - 400: Petición incorrecta. Error del cliente
@@ -259,29 +202,27 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
     - 500: Error interno de la Base de datos
 
 --
-- PUT /cart/{id} - Modifica el carrito DUDAS (todo el carrito o por id) 
+- PUT /pedido/{id} - Modifica los artículos del pedido.  
   - Parámetros: 
-    - id: Identificador del artículo
-    - {nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+    - id: Identificador del pedido
+    - {name,dni,email,phone,code_postal,articles_id,name,categoria,quantity} 
   - Respuestas:
     - 200: Modificado ok. Devuelve:
-      - {id,nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+      - {rental_articles_id,name,dni,email,phone,code_postal,articles_id,name,categoria,quantity} 
     - 400: Petición incorrecta. Error del cliente
     - 401: No autorizado o incorrecto
     - 404: Artículo no encontrado
     - 500: Error interno de la Base de datos
 
 --
-- DELETE /cart/{id} - Elimina un artículo del carrito
+- DELETE /pedido/{id} - Elimina artículos del pedido
   - Parámetros: 
-    - id: Identificador del artículo
-    - {nameArticle,categoria,photo,quantity,price} DUDAS parámetros 
+    - id: Identificador del pedido
   - Respuestas:
-    - 200: Eliminado ok. Devuelve:
-      - {id,nameArticle,categoria,photo,quantity,price} DUDAS parámetros
+    - 200: Eliminado ok.
     - 400: Petición incorrecta. Error del cliente
     - 401: No autorizado o incorrecto
-    - 404: Artículo no encontrado
+    - 404: Artículo de pedido no encontrado
     - 500: Error interno de la Base de datos
 
 
