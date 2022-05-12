@@ -1,4 +1,4 @@
-> Integrantes del grupo: Angel, Brais, Chistian, Maite.
+> Integrantes del grupo: Brais, Chistian, Maite.
 
 #
 # Título
@@ -57,9 +57,9 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - Name
 - Description
 - Stock
-- UrlFoto 
+- Photo 
 - Price (pack para alquilar con IVA incluido)
-- Categoria-id (FOREIGN KEY)
+- Category_id (FOREIGN KEY)
 - URL / Referencia - posible enlace con Amazon (si da tiempo)
 
 
@@ -89,12 +89,12 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - Return_date
 - Quantity
 - Price
-- Forma de pago
+- Method of payment
 
 
-## Categorias
+## Categories
 
-- Categorias_id (PRIMARY KEY)
+- Category_id (PRIMARY KEY)
 - Name
 - Description
 
@@ -124,7 +124,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
   - Parámetros: Ninguno
   - Respuestas:
     - 200: ok. Devuelve:
-      - [{articles_id,name,description,stock,photo,price,categoria}]
+      - [{articles_id,name,description,stock,photo,price,category_id}]
     - 500: Error interno de la Base de datos
 
 --
@@ -133,14 +133,14 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
     - id: Identificador del artículo
   - Respuestas:
     - 200: ok. Devuelve:
-      - {articles_id,name,description,stock,photo,price,categoria}
+      - {articles_id,name,description,stock,photo,price,category_id}
     - 404: Artículo no encontrado
     - 500: Error interno de la Base de datos
 
 --
 - POST /article/ - Crea un nuevo artículo (se genera el id)
   - Parámetros: 
-    - {name,description,stock,photo,price,categoria}
+    - {name,description,stock,photo,price,category_id}
   - Respuestas:
     - 201: Creado ok. Devuelve: {id}
     - 400: Petición incorrecta. Error del cliente
@@ -151,10 +151,10 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - PUT /article/{id} - Modificar un artículo
   - Parámetros: 
     - id: Identificador del artículo
-    - {name,description,stock,photo,price,categoria}
+    - {name,description,stock,photo,price,category_id}
   - Respuestas:
     - 200: Modificado ok. Devuelve:
-      - {articles_id,name,description,stock,urlFoto,price,categoriaId}
+      - {articles_id,name,description,stock,urlFoto,price,category_id}
     - 400: Petición incorrecta. Error del cliente
     - 401: No autorizado o incorrecto
     - 404: Artículo no encontrado
@@ -185,7 +185,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
   - Parámetros: Ninguno
   - Respuestas:
     - 200: ok. Devuelve:
-      - [{rental_articles_id,name,dni,email,phone,code_postal,articles_id,name,categoria,quantity}] (objeto esta construido en los controladores con los datos de Articles, Rental_articles, y Rental)
+      - [{rental_articles_id,name,dni,email,phone,code_postal,articles_id,name,category_id,quantity}] (objeto esta construido en los controladores con los datos de Articles, Rental_articles, y Rental)
     - 500: Error interno de la Base de datos
     
 
@@ -196,7 +196,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 
   - Parámetros:
     - id: Identificador del pedido  
-    - {name,dni,email,phone,code_postal,articles_id,name,categoria,quantity} 
+    - {name,dni,email,phone,code_postal,articles_id,name,category_id,quantity} 
   - Respuestas:
     - 201: Añadido ok. Devuelve: {id}
     - 400: Petición incorrecta. Error del cliente
@@ -207,10 +207,10 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - PUT /pedido/{id} - Modifica los artículos del pedido.  
   - Parámetros: 
     - id: Identificador del pedido
-    - {name,dni,email,phone,code_postal,articles_id,name,categoria,quantity} 
+    - {name,dni,email,phone,code_postal,articles_id,name,category_id,quantity} 
   - Respuestas:
     - 200: Modificado ok. Devuelve:
-      - {rental_articles_id,name,dni,email,phone,code_postal,articles_id,name,categoria,quantity} 
+      - {rental_articles_id,name,dni,email,phone,code_postal,articles_id,name,category_id,quantity} 
     - 400: Petición incorrecta. Error del cliente
     - 401: No autorizado o incorrecto
     - 404: Artículo no encontrado
@@ -228,13 +228,74 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
     - 500: Error interno de la Base de datos
 
 
-## Categorias
+## Categories
+
+
+GET
+
+GET
+
+POST
+
+PUT
+
+DELETE
 
 
 ## Staff
 
         .....(página externa) 
 
+- GET /staff/ - Devuelve la lista del personal
+  - Parámetros: Ninguno
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - [{staff_id,name,dni,password,email,phone,address,active}]
+    - 500: Error interno de la Base de datos
+
+--
+- GET /staff/{id} - Devuelve un trabajador específico del personal
+  - Parámetros: 
+    - id: Identificador del trabajador
+  - Respuestas:
+    - 200: ok. Devuelve:
+      - {staff_id,name,dni,password,email,phone,address,active}
+    - 404: Trabajador no encontrado
+    - 500: Error interno de la Base de datos
+
+--
+- POST /staff/ - Añade un trabajador al personal (se genera el id)
+  - Parámetros: 
+    - {name,dni,password,email,phone,address,active}
+  - Respuestas:
+    - 201: Creado ok. Devuelve: {id}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 500: Error interno de la Base de datos
+
+--
+- PUT /staff/{id} - Actualizaciones del personal
+  - Parámetros: 
+    - id: Identificador del trabajador
+    - {name,dni,password,email,phone,address,active}
+  - Respuestas:
+    - 200: Actualizado ok. Devuelve:
+      - {staff_id,name,dni,password,email,phone,address,active}
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Trabajador no encontrado
+    - 500: Error interno de la Base de datos
+
+--
+- DELETE /staff/{id} - Elimina un trabajador del personal
+  - Parámetros: 
+    - id: Identificador del trabajador
+  - Respuestas:
+    - 200: Eliminado ok. 
+    - 400: Petición incorrecta. Error del cliente
+    - 401: No autorizado o incorrecto
+    - 404: Trabajador no encontrado
+    - 500: Error interno de la Base de datos
 
 
 
