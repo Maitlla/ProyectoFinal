@@ -89,7 +89,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 - Return_date
 - Quantity
 - Price
-- Method of payment
+- Method_of_payment
 
 
 ## Categories
