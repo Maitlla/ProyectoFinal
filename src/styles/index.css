@@ -7,12 +7,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
-    
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
     /*
     min-width: 360px;
@@ -21,33 +15,20 @@ body {
     */
   }
   
-  code {
-    font-family: 'Montserrat', sans-serif;
-    font-family: 'Rajdhani', sans-serif;
-    font-family: 'Roboto', sans-serif;
-  }
-
+ 
   @font-face {
-    font-family: 'Billion Dreams';
-    src: url('BillionDreams_PERSONAL.ttf') format('truetype');
-    font-style: normal;
-    font-weight: normal;
+    font-family: 'BillionDreams';
+    src: url('../fonts/BillionDreams_PERSONAL.ttf') format('truetype');
 }
 
   
-
-p:hover{
-    color:blue;  
-}
-
-h3 {
-    padding-top: 10px;
-    text-align: center;
+p:hover nav {
+    color:#98d3fd;  
 }
 
 .sizeP {
-    font-size: 1.3em;
-    padding-top: 5px;
+    font-size: 1.6em;
+    margin-top: 20px;
 } 
 
 .lista {
@@ -58,13 +39,15 @@ h3 {
     background-color: black;
     position: fixed;
     width: 100%;
+    height: 8vh;
+    font-family: "BillionDreams";
+    font-weight: lighter;
 }
 
 .logo {
     width: 50px;
     height: 50px;
     padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .buscador {
@@ -132,3 +115,12 @@ h3 {
     width: 70px;
     height: 70px; 
 }
+
+/*
+@media (min-width: 400px) {
+    .navFondo{
+        background-color: aqua;
+    }
+  }
+  */
+

@@ -103,7 +103,7 @@ Tienda online donde se alquilan pack para hacer surf y para practicar skate, (la
 
         .....(página externa) Login de acceso básico para el personal, (gestión de la base de datos).
 
-- Staff-id (AUTO_INCREMENT)
+- Staff_id (AUTO_INCREMENT)
 - Name
 - DNI / NIF
 - Password
