@@ -22,7 +22,7 @@ body {
 }
 
   
-p:hover nav {
+nav p:hover  {
     color:#98d3fd;  
 }
 
