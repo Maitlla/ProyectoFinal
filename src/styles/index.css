@@ -27,8 +27,9 @@ nav p:hover  {
 }
 
 .sizeP {
-    font-size: 1.6em;
-    margin-top: 20px;
+    font-size: 1.8em;
+    margin-top: 15px;
+    padding-right: 20px;
 } 
 
 .lista {
@@ -50,23 +51,19 @@ nav p:hover  {
     padding-top: 10px;
 }
 
-.buscador {
-    border-radius: 5px;
-    margin-top: 25px;
-}
-
 .carrito {
     width: 65px;
     height: 65px;
     padding-top: 7px;
-    padding-right: 20px;
+    padding-right: 40px;
+    margin-left: 60px;
 }
 
 .nombre {
     width: 140px;
     height: 40px;
     padding-top: 15px;
-    margin-right: 120px;
+    margin-right: 60px;
 }
 
 .divLuaWaveWhite {

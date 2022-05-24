@@ -33,6 +33,13 @@ h3 {
   margin-top: 0px;
 }
 
+.divbutton {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .buttonGeneral {
   color: white;
   background-color: black;
@@ -46,18 +53,31 @@ h3 {
   
 }
 
+.buttonConSin {
+  color: white;
+  background-color: black;
+  width: 150px;
+  height: 25px;
+  font-family: "BillionDreams";
+  font-weight: lighter;
+  font-size: 1.4em;
+  margin-top: 30px;
+
+}
+
 .cuadrarMain {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   
 }
 
-.divIzq {
+.divDer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  align-content: space-between;
   margin-top: 30px;
 
 }
@@ -72,21 +92,29 @@ h3 {
   text-align: center;
 }
 
-.divDer {
-  padding: 0px;
-  margin: 0px;
+.divIzq {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.divRectangulos {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  align-items: end;
 }
 
 .rectanguloBase {
-  opacity: 50%;
+  opacity: 60%;
+  margin-top: 40px;
   padding-top: 10px;
-  width: 30vw;
-  height: 11vh;
+  width: 40vw;
+  height: 12vh;
 }
 
 .imagenTabla {
-  padding-left: 20px;
-  padding-top: 30px;
+  padding-right: 30px;
+  padding-top: 0px;
   height: 70vh;
 }
 
