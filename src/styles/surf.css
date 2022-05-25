@@ -21,11 +21,19 @@ body {
 }
 
 h1 {
-    margin-top: 0px;
+    margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
     font-family: "BillionDreams";
     font-weight: lighter;
+    color: black;
+}
+
+.especialTexth2 {
+  text-align: center;
+  font-family: "BillionDreams";
+  font-weight: lighter;
+  background-color: black;
 
 }
 
@@ -35,7 +43,7 @@ h3 {
 
 .divbutton {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -49,20 +57,7 @@ h3 {
   font-weight: lighter;
   font-size: 1.4em;
   margin-bottom: 20px;
-  padding-bottom: 30px;
-  
-}
-
-.buttonConSin {
-  color: white;
-  background-color: black;
-  width: 150px;
-  height: 25px;
-  font-family: "BillionDreams";
-  font-weight: lighter;
-  font-size: 1.4em;
-  margin-top: 30px;
-
+  padding-bottom: 30px; 
 }
 
 .cuadrarMain {

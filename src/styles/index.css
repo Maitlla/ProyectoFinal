@@ -21,14 +21,25 @@ body {
     src: url('../fonts/BillionDreams_PERSONAL.ttf') format('truetype');
 }
 
+a:-webkit-any-link {
+    color: #98d3fd;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:focus-within {
+    color: #98d3fd;
+    cursor: pointer;
+    text-decoration: underline wavy;
+}
   
-nav p:hover  {
+.nav p:hover  {
     color:#98d3fd;  
 }
 
 .sizeP {
-    font-size: 1.8em;
-    margin-top: 15px;
+    font-size: 1.9em;
+    margin-top: 12px;
     padding-right: 20px;
 } 
 
@@ -55,8 +66,6 @@ nav p:hover  {
     width: 65px;
     height: 65px;
     padding-top: 7px;
-    padding-right: 40px;
-    margin-left: 60px;
 }
 
 .nombre {
