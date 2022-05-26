@@ -21,25 +21,28 @@ body {
     src: url('../fonts/BillionDreams_PERSONAL.ttf') format('truetype');
 }
 
+
 a:-webkit-any-link {
-    color: #98d3fd;
     cursor: pointer;
     text-decoration: none;
+    color: white; 
+    text-shadow: black 0.1em 0.1em 0.2em 
 }
 
-a:focus-within {
-    color: #98d3fd;
+nav a:focus {
+    color: dodgerblue;
     cursor: pointer;
     text-decoration: underline wavy;
 }
-  
-.nav p:hover  {
-    color:#98d3fd;  
+
+nav p:hover  {
+    color:dodgerblue;  
 }
 
 .sizeP {
     font-size: 1.9em;
-    margin-top: 12px;
+    margin-top: 15px;
+    margin-bottom: px;
     padding-right: 20px;
 } 
 
@@ -51,7 +54,7 @@ a:focus-within {
     background-color: black;
     position: fixed;
     width: 100%;
-    height: 8vh;
+    height: 7vh;
     font-family: "BillionDreams";
     font-weight: lighter;
 }
@@ -88,6 +91,7 @@ a:focus-within {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+    
 }
 
 .LuaWaveWhite {
