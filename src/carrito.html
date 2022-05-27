@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="./styles/contacto.css">
+    <link rel="stylesheet" href="./styles/carrito.css">
     <script type="module" src="./js/index.mjs"></script>
     <title>LuaWave</title>
 </head>
 
-<body class>
+<body class="bodyFondo">
     <!--  -->
     <!-- <header> -->
     <header>
@@ -42,12 +40,72 @@
         </nav>
     </header>
     <!-- contenedor <main> -->
-    <main>
-        <div>
-            <h1>Donde estamos</h1>
-        </div>
-        <div class="divmapa">
-            <img class="mapa" src="./img/mapa.png" alt="mapa">
+    <main class="fondoMain">
+        <div class="cuadrarMain">
+            <div class="divIzq">
+                <div class="divRectangulos">
+                    <div>
+                        <img class="imgTuCarrito" src="./img/letraCarro.png" alt="imgTuCarro">
+                        <!-- <p class="rectanguloTexto">Sin neopreno - 1 día</p>  -->
+                    </div>
+                    <div>
+                        <img class="rectanguloBase" src="./img/rectanguloFondo.png" alt="tablaFondo">
+                        <img class="imagenTablaH" src="./img/skate12H.png" alt="tablaSkate">
+                        <!-- <p class="rectanguloTexto">Sin neopreno - 1 día</p>  -->
+                    </div>
+                    <h1>Tabla de Skate con accesorios</h1>
+                    <h2>5 días - 25 €</h2>
+                    <div>
+                        <h2>Cantidad</h2>
+                    </div>
+                    <div>
+                        <button class="buttonGeneral"><a href="./carrito.html">Finalizar reserva</a></button>
+                    </div>
+                </div>
+                <!--
+                <ul>
+                    <li>
+                        <a href="http://127.0.0.1:5500/ProyectoFinal/src/index.html" target="_blank">
+                            <img class="img" src="./img/loquesea.jpg" alt="imagen">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./home.html">
+                            <h5></h5>
+                        </a>
+                    </li>
+                </ul>
+                -->
+
+            </div>
+
+            <!-- división del main en dos -->
+            <div class="divDer">
+                <div>
+             
+                </div>
+                <div class="">
+                    <p>Nombre</p>
+                    <input type="text">
+                    <p>Email</p>
+                    <input type="text">
+                    <p>Teléfono</p>
+                    <input type="text">
+                    <p>C.P.</p>
+                    <input type="text">
+                    <div class="divTexto">
+                        <h2 class="textoAzul">Total a pagar</h2>
+                        <h2 class="textoAzul">50 €  IVA incl.</h2>
+                    </div>
+                    <button class="buttonPagar"><a href="./pasarelaPago.html">PAGAR</a></button>
+                    <div class="divTexto texto">
+                        <p>Dirección de recogida de la Reserva</p>
+                        <a class="aEnlace" href="https://www.google.es/maps/preview" target="_blank">
+                            <img class="iconos" src="./img/iconoFooter9.png" alt="iconoM">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- <footer> -->
